@@ -5,3 +5,4 @@ __pycache__/
 *.pcap
 *.pcapng
 report.json
+*.egg-info/

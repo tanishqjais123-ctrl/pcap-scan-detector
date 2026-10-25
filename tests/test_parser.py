@@ -4,7 +4,7 @@ from pcap_scan_detector.parser import read_events
 
 def test_tcp_syn_fields(tmp_path):
     p = tmp_path / "a.pcap"
-    wrpcap(str(p), [Ether() / IP(src="10.0.0.1", dst="10.0.0.2") / TCP(sport=4000, dport=22, flags="S")])
+    wrpcap(str(p), [Ether(dst="ff:ff:ff:ff:ff:ff") / IP(src="10.0.0.1", dst="10.0.0.2") / TCP(sport=4000, dport=22, flags="S")])
     ev = list(read_events(str(p)))
     assert len(ev) == 1
     assert ev[0].src == "10.0.0.1"
@@ -14,7 +14,7 @@ def test_tcp_syn_fields(tmp_path):
 
 def test_non_ip_packet_skipped(tmp_path):
     p = tmp_path / "b.pcap"
-    wrpcap(str(p), [Ether() / ARP()])
+    wrpcap(str(p), [Ether(dst="ff:ff:ff:ff:ff:ff") / ARP()])
     assert list(read_events(str(p))) == []
 
 

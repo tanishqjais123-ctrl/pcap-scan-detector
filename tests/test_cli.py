@@ -7,7 +7,7 @@ from pcap_scan_detector.cli import main
 def make_scan(path, n=20):
     pkts = []
     for i in range(n):
-        p = Ether() / IP(src="10.0.0.1", dst="10.0.0.2") / TCP(sport=40000, dport=1000 + i, flags="S")
+        p = Ether(dst="ff:ff:ff:ff:ff:ff") / IP(src="10.0.0.1", dst="10.0.0.2") / TCP(sport=40000, dport=1000 + i, flags="S")
         p.time = 1000.0 + i * 0.1
         pkts.append(p)
     wrpcap(str(path), pkts)
