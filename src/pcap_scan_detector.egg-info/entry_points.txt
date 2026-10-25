@@ -1,0 +1,2 @@
+[console_scripts]
+pcap-scan = pcap_scan_detector.cli:main
