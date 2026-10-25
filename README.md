@@ -1,5 +1,7 @@
 # pcap-scan-detector
 
+[![tests](https://github.com/tanishqjais123-ctrl/pcap-scan-detector/actions/workflows/tests.yml/badge.svg)](https://github.com/tanishqjais123-ctrl/pcap-scan-detector/actions/workflows/tests.yml)
+
 A small Python tool that reads a PCAP capture file and flags **possible TCP SYN port scans**.
 
 > Status: v0.1.0, a learning project. It detects one pattern well and says so. It is not a replacement for Zeek, Suricata or Snort.
@@ -44,6 +46,16 @@ pcap-scan capture.pcap --json report.json
 | `--json FILE` | off | Also write the report to a JSON file |
 
 Exit codes: `0` nothing found, `1` possible scan found, `2` error (missing or unreadable file).
+
+## Try it
+
+A synthetic demo capture (no real traffic) is included:
+
+```bash
+pcap-scan examples/demo_scan.pcap
+```
+
+`examples/make_demo_scan.py` shows how it was built.
 
 ## Example output
 
